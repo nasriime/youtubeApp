@@ -3,14 +3,14 @@
  *
  * Stateful component that represents a detail view for a Video.
  */
-import controller from './video-detail.contoller'
 
 export const VideoDetailComponent = {
   bindings: {
-    speaker: '<'
+    video: '<'
   },
-  controller,
   template: `
-  <video-item></video-item>
+    <div>
+      {{ $ctrl.video.items[0].id }}    
+    </div>
   `
 }

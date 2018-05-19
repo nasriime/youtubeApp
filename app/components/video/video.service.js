@@ -22,13 +22,22 @@ export default class VideoService {
   }
 
   getVideo (id) {
-    // return this.$http.get(`/api/videos/${id}`).then(response => response.data)
-    return this.$http.get('https://www.googleapis.com/youtube/v3/search',
+    return this.$http.get(`https://www.googleapis.com/youtube/v3/videos`,
     {
       params:{
-        q:query,
-        maxResults: 25,
-        part :'snippet',
+        id,
+        part :'snippet,contentDetails,statistics',
+        key:'AIzaSyCC-Msso9uDZxEBkSMcaafE-3WiVcsv98I'
+      }
+    }).then(response => response.data)
+  }
+
+  getchannel (id) {
+    return this.$http.get(`https://www.googleapis.com/youtube/v3/channels`,
+    {
+      params:{
+        id,
+        part :'snippet,contentDetails,statistics',
         key:'AIzaSyCC-Msso9uDZxEBkSMcaafE-3WiVcsv98I'
       }
     }).then(response => response.data)
