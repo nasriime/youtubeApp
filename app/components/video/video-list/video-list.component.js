@@ -17,10 +17,12 @@ export const VideoListComponent = {
   template: `
     <ul class="collection">
       <li ng-repeat="item in $ctrl.items">
-        <span style="color:red" ng-if="item.id.kind == 'youtube#channel'">{{item.id.kind}}</span>  
-        <span style="color:yellow" 
-        ng-if="item.id.kind == 'youtube#video'">
-          <a ui-sref="video({id: item.id.videoId })">{{item.id.kind}}</a>
+        <span ng-if="item.id.kind == 'youtube#channel'">
+          <a style="color:red" ui-sref="channel({id: item.id.channelId })">{{item.id.kind}}</a>
+        </span>  
+        
+        <span ng-if="item.id.kind == 'youtube#video'">
+          <a style="color:yellow" ui-sref="video({id: item.id.videoId })">{{item.id.kind}}</a>
         </span>  
         <span style="color:green" ng-if="item.id.kind == 'youtube#playlist'">{{item.id.kind}}</span>  
       </li>
