@@ -24,7 +24,10 @@ export const VideoListComponent = {
         <span ng-if="item.id.kind == 'youtube#video'">
           <a style="color:yellow" ui-sref="video({id: item.id.videoId })">{{item.id.kind}}</a>
         </span>  
-        <span style="color:green" ng-if="item.id.kind == 'youtube#playlist'">{{item.id.kind}}</span>  
+
+        <span  ng-if="item.id.kind == 'youtube#playlist'">
+          <a style="color:green" ui-sref="playlist({id: item.id.playlistId })">{{item.id.kind}}</a>
+        </span>  
       </li>
     </ul>
   `

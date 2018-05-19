@@ -11,6 +11,7 @@ import { VideoItemComponent } from './video-item/video-item.component'
 import { VideoListComponent } from './video-list/video-list.component'
 import { VideoDetailComponent } from './video-detail/video-detail.component'
 import { channelDetailComponent } from './channel-detail/channel-detail.component'
+import { PlaylistItemsComponent } from './playlist-items/playlist-items.component'
 import VideoService from './video.service'
 
 const video = angular
@@ -20,6 +21,7 @@ const video = angular
   .component('videoList', VideoListComponent)
   .component('videoDetail', VideoDetailComponent)
   .component('channelDetail', channelDetailComponent)
+  .component('playlistItems', PlaylistItemsComponent)
   .config(($stateProvider, $urlRouterProvider, $locationProvider) => {
     $locationProvider.html5Mode(true);
 
@@ -39,7 +41,14 @@ const video = angular
         url: '/channel/:id',
         component: 'channelDetail',
         resolve: {
-          channel: (VideoService, $stateParams) => VideoService.getChannel($stateParams.id)
+          channel: (VideoService, $stateParams) => VideoService.getchannel($stateParams.id)
+        }
+      })
+      .state('playlist', {
+        url: '/playlist/:id',
+        component: 'playlistItems',
+        resolve: {
+          playlistItems: (VideoService, $stateParams) => VideoService.getPlaylistItems($stateParams.id)
         }
       })
     $urlRouterProvider.otherwise('/')
