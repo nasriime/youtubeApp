@@ -243,7 +243,7 @@ var PlaylistItemsComponent = {
   bindings: {
     playlistItems: '<'
   },
-  template: '\n    <div>\n      {{ $ctrl.video.items[0].id }}   \n      <ul>\n        <li ng-repeat="item in $ctrl.items">\n          {{ item.id.videoId }} \n        </li>\n      </ul>\n    </div>\n  '
+  template: '\n    <div>\n      {{ $ctrl.playlistItems }}\n    </div>\n  '
 };
 exports.PlaylistItemsComponent = PlaylistItemsComponent;
 
@@ -443,7 +443,7 @@ var VideoListController = (function () {
   function VideoListController(VideoService) {
     _classCallCheck(this, VideoListController);
 
-    this.query = 'spongebob';
+    this.query = 'PHP Front To Back';
     this._VideoService = VideoService;
   }
 
@@ -477,7 +477,6 @@ module.exports = exports['default'];
  *
  * Service to fetch data from Videos API
  */
-
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -497,10 +496,10 @@ var VideoService = (function () {
 
   _createClass(VideoService, [{
     key: 'getVideos',
-    value: function getVideos(query) {
+    value: function getVideos(q) {
       return this.$http.get('https://www.googleapis.com/youtube/v3/search', {
         params: {
-          q: query,
+          q: q,
           maxResults: 25,
           part: 'snippet',
           key: 'AIzaSyCC-Msso9uDZxEBkSMcaafE-3WiVcsv98I'
@@ -556,6 +555,7 @@ var VideoService = (function () {
       return this.$http.get('https://www.googleapis.com/youtube/v3/playlistItems', {
         params: {
           playlistId: id,
+          maxResults: 10,
           part: 'snippet,contentDetails',
           key: 'AIzaSyCC-Msso9uDZxEBkSMcaafE-3WiVcsv98I'
         }

@@ -7,7 +7,7 @@ import VideoService from '../video.service'
 
 class VideoListController {
   constructor (VideoService) {
-    this.query = 'spongebob'
+    this.query = 'PHP Front To Back'
     this._VideoService = VideoService
   }
 
