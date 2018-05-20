@@ -1,9 +1,9 @@
-# youtube-App
+# Youtube App
 
  <h2>An application with Angular 1.x and ES6.</h2>
 
 <h3>Introduction</h3>
-<p>This application is about to search youtube api v3 . It is a very small application which has a Search module which can be used to search videos, playlists and chaneels. </p>
+<p>This application is about to search youtube api v3 . It is a very small application which has a Search module which can be used to search videos, playlists and channels. </p>
 
 <h3>How to install</h3>
 <h5>Execute the following commands in sequence</h5>

@@ -17,16 +17,16 @@ export const VideoListComponent = {
     </div>
 
     <ul class="collection" ng-show="$ctrl.items.length">
-      <li ng-repeat="item in $ctrl.items">
+      <li ng-repeat="item in $ctrl.items | limitTo: $ctrl.itemsLimit()">
 
         <a class="collection__channel" ng-if="item.id.kind == 'youtube#channel'" ui-sref="channel({id: item.id.channelId })">
           <div class="collection__channel--left">
             <img ng-src="{{item.snippet.thumbnails.medium.url}}" >
           </div> 
           <div class="collection__channel--right">
-            {{item.snippet.publishedAt | date }}<br>
-            {{item.snippet.title}}<br>
-            {{item.snippet.channelTitle}}
+            <p>{{item.snippet.publishedAt | date }}</p>
+            <p>{{item.snippet.title}}</p>
+            <p>{{item.snippet.channelTitle}}</p>
           </div>
         </a>        
       
@@ -35,9 +35,9 @@ export const VideoListComponent = {
             <img ng-src="{{item.snippet.thumbnails.medium.url}}" >
           </div> 
           <div class="collection__video--right">
-            {{item.snippet.publishedAt | date }}<br>
-            {{item.snippet.title}}<br>
-            {{item.snippet.channelTitle}}
+            <p>{{item.snippet.publishedAt | date }}</p>
+            <p>{{item.snippet.title}}</p>
+            <p>{{item.snippet.channelTitle}}</p>
           </div>
         </a>
     
@@ -46,17 +46,17 @@ export const VideoListComponent = {
             <img ng-src="{{item.snippet.thumbnails.medium.url}}" >
           </div> 
           <div class="collection__playlist--right">
-            {{item.snippet.publishedAt | date }}<br>
-            {{item.snippet.title}}<br>
-            {{item.snippet.channelTitle}}
+            <p>{{item.snippet.publishedAt | date }}</p>
+            <p>{{item.snippet.title}}</p>
+            <p>{{item.snippet.channelTitle}}</p>
           </div>
         </a>
        
       </li>
     </ul>
 
-    <div class="show-more">
-      <span ng-click="" class="show-more__btn">Show more items</span>
+    <div class="show-more" ng-show="$ctrl.items.length">
+      <span ng-show="$ctrl.hasMoreItemsToShow()" ng-click="$ctrl.showMoreItems()" class="show-more__btn">Show more items</span>
     </div>
   `
 }

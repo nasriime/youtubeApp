@@ -104,7 +104,7 @@ var _headerController2 = _interopRequireDefault(_headerController);
 
 var HeaderComponent = {
   controller: _headerController2["default"],
-  template: "\n    <header class=\"header\">\n      <form class=\"form\">\n        <div class=\"form__element\">\n          <i class=\"fa fa-youtube-play\"></i>\n          <input ng-if=\"!$ctrl.disableSearch\" class=\"header__search-input\" type=\"text\" ng-model=\"$ctrl.searchInput\" placeholder=\"Search\" >\n          <span ng-if=\"$ctrl.disableSearch\">{{$ctrl.searchInput}}</span>\n        </div>\n        <div>\n          <button class=\"header__btn\">\n            <a ng-click=\"$ctrl.disableSearch = !$ctrl.disableSearch\" ng-if=\"!$ctrl.disableSearch\" ui-sref=\"videos({ query: $ctrl.searchInput })\">\n              <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\n            </a>\n            <a ng-click=\"$ctrl.disableSearch = !$ctrl.disableSearch\"  ng-if=\"$ctrl.disableSearch\">\n              <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\n            </a>\n          </button>\n        </div>\n      </form>\n    </header>\n  "
+  template: "\n    <header class=\"header\">\n      <form class=\"form\">\n        <div class=\"form__element\">\n          <i class=\"fa fa-youtube-play\"></i>\n          <input ng-if=\"!$ctrl.disableSearch\" class=\"header__search-input\" type=\"text\" ng-model=\"$ctrl.searchInput\" placeholder=\"Search\" >\n          <span ng-if=\"$ctrl.disableSearch\">{{$ctrl.searchInput}}</span>\n        </div>\n        <div>\n          <button type=\"submit\" class=\"header__btn\">\n            <a ng-click=\"$ctrl.disableSearch = !$ctrl.disableSearch\" ng-if=\"!$ctrl.disableSearch\" ui-sref=\"videos({ query: $ctrl.searchInput })\">\n              <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\n            </a>\n            <a ng-click=\"$ctrl.disableSearch = !$ctrl.disableSearch\"  ng-if=\"$ctrl.disableSearch\">\n              <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\n            </a>\n          </button>\n        </div>\n      </form>\n    </header>\n  "
 };
 exports.HeaderComponent = HeaderComponent;
 
@@ -443,7 +443,7 @@ var _videoListController2 = _interopRequireDefault(_videoListController);
 
 var VideoListComponent = {
   controller: _videoListController2['default'],
-  template: '\n    <div class="spinner" ng-hide="$ctrl.items.length">\n     <i class="fa fa-spinner fa-spin" style="font-size:24px;margin-bottom:10px"></i>\n     <span>Loading...</span>\n    </div>\n\n    <ul class="collection" ng-show="$ctrl.items.length">\n      <li ng-repeat="item in $ctrl.items">\n\n        <a class="collection__channel" ng-if="item.id.kind == \'youtube#channel\'" ui-sref="channel({id: item.id.channelId })">\n          <div class="collection__channel--left">\n            <img ng-src="{{item.snippet.thumbnails.medium.url}}" >\n          </div> \n          <div class="collection__channel--right">\n            {{item.snippet.publishedAt | date }}<br>\n            {{item.snippet.title}}<br>\n            {{item.snippet.channelTitle}}\n          </div>\n        </a>        \n      \n        <a class="collection__video" ng-if="item.id.kind == \'youtube#video\'" ui-sref="video({id: item.id.videoId })">\n          <div class="collection__video--left">\n            <img ng-src="{{item.snippet.thumbnails.medium.url}}" >\n          </div> \n          <div class="collection__video--right">\n            {{item.snippet.publishedAt | date }}<br>\n            {{item.snippet.title}}<br>\n            {{item.snippet.channelTitle}}\n          </div>\n        </a>\n    \n        <a class="collection__playlist" ng-if="item.id.kind == \'youtube#playlist\'" ui-sref="playlist({id: item.id.playlistId })">\n          <div class="collection__playlist--left">\n            <img ng-src="{{item.snippet.thumbnails.medium.url}}" >\n          </div> \n          <div class="collection__playlist--right">\n            {{item.snippet.publishedAt | date }}<br>\n            {{item.snippet.title}}<br>\n            {{item.snippet.channelTitle}}\n          </div>\n        </a>\n       \n      </li>\n    </ul>\n\n    <div class="show-more">\n      <span ng-click="" class="show-more__btn">Show more items</span>\n    </div>\n  '
+  template: '\n    <div class="spinner" ng-hide="$ctrl.items.length">\n     <i class="fa fa-spinner fa-spin" style="font-size:24px;margin-bottom:10px"></i>\n     <span>Loading...</span>\n    </div>\n\n    <ul class="collection" ng-show="$ctrl.items.length">\n      <li ng-repeat="item in $ctrl.items | limitTo: $ctrl.itemsLimit()">\n\n        <a class="collection__channel" ng-if="item.id.kind == \'youtube#channel\'" ui-sref="channel({id: item.id.channelId })">\n          <div class="collection__channel--left">\n            <img ng-src="{{item.snippet.thumbnails.medium.url}}" >\n          </div> \n          <div class="collection__channel--right">\n            <p>{{item.snippet.publishedAt | date }}</p>\n            <p>{{item.snippet.title}}</p>\n            <p>{{item.snippet.channelTitle}}</p>\n          </div>\n        </a>        \n      \n        <a class="collection__video" ng-if="item.id.kind == \'youtube#video\'" ui-sref="video({id: item.id.videoId })">\n          <div class="collection__video--left">\n            <img ng-src="{{item.snippet.thumbnails.medium.url}}" >\n          </div> \n          <div class="collection__video--right">\n            <p>{{item.snippet.publishedAt | date }}</p>\n            <p>{{item.snippet.title}}</p>\n            <p>{{item.snippet.channelTitle}}</p>\n          </div>\n        </a>\n    \n        <a class="collection__playlist" ng-if="item.id.kind == \'youtube#playlist\'" ui-sref="playlist({id: item.id.playlistId })">\n          <div class="collection__playlist--left">\n            <img ng-src="{{item.snippet.thumbnails.medium.url}}" >\n          </div> \n          <div class="collection__playlist--right">\n            <p>{{item.snippet.publishedAt | date }}</p>\n            <p>{{item.snippet.title}}</p>\n            <p>{{item.snippet.channelTitle}}</p>\n          </div>\n        </a>\n       \n      </li>\n    </ul>\n\n    <div class="show-more">\n      <span ng-show="$ctrl.hasMoreItemsToShow()" ng-click="$ctrl.showMoreItems()" class="show-more__btn">Show more items</span>\n    </div>\n  '
 };
 exports.VideoListComponent = VideoListComponent;
 
@@ -471,10 +471,23 @@ var _videoService2 = _interopRequireDefault(_videoService);
 
 var VideoListController = (function () {
   function VideoListController(VideoService, $stateParams) {
+    var _this = this;
+
     _classCallCheck(this, VideoListController);
 
     this._VideoService = VideoService;
     this.query = $stateParams.query;
+    this.pagesShown = 1;
+    this.pageSize = 5;
+    this.itemsLimit = function () {
+      return _this.pageSize * _this.pagesShown;
+    };
+    this.hasMoreItemsToShow = function () {
+      return _this.pagesShown < 25 / _this.pageSize;
+    };
+    this.showMoreItems = function () {
+      _this.pagesShown = _this.pagesShown + 1;
+    };
   }
 
   _createClass(VideoListController, [{
@@ -485,10 +498,10 @@ var VideoListController = (function () {
   }, {
     key: 'getVideos',
     value: function getVideos() {
-      var _this = this;
+      var _this2 = this;
 
       this._VideoService.getVideos(this.query).then(function (res) {
-        _this.items = res.items;
+        _this2.items = res.items;
       });
     }
   }]);

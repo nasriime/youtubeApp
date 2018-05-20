@@ -16,7 +16,7 @@ export const HeaderComponent = {
           <span ng-if="$ctrl.disableSearch">{{$ctrl.searchInput}}</span>
         </div>
         <div>
-          <button class="header__btn">
+          <button type="submit" class="header__btn">
             <a ng-click="$ctrl.disableSearch = !$ctrl.disableSearch" ng-if="!$ctrl.disableSearch" ui-sref="videos({ query: $ctrl.searchInput })">
               <i class="fa fa-search" aria-hidden="true"></i>
             </a>

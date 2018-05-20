@@ -6,7 +6,14 @@
 .header__search-input{
     padding: 5px;
     align-self: center;
-    width: calc(100% - 50px);
+    width: 50%;
+    border: none;
+    @media(max-width:480px){
+        width:calc(100% - 50px);
+    }
+    &:focus{
+        border: none;
+    }
 }
 .form__element{
     display: flex;
@@ -39,6 +46,7 @@
 }
 .collection{
     padding:30px 30px 0;
+    
 }
 .collection__video,.collection__channel,.collection__playlist{
     display:flex;
@@ -62,9 +70,22 @@
         width:100%;
     }
 }
+.collection__channel--left{
+    img{
+        width:50%;
+    }
+}
 .collection__video--right,.collection__playlist--right,.collection__channel--right{
     flex:1;
     color:$font-color;
+    p{
+        margin-bottom: 10px;   
+    }
+}
+.collection__channel--right{
+    display:flex;
+    flex-flow: column;
+    justify-content: center;
 }
 
 .show-more{
