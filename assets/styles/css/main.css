@@ -63,6 +63,10 @@ table {
 .form__element {
   display: flex;
   flex: 2; }
+  .form__element span {
+    align-self: center;
+    color: #fff;
+    font-size: 25px; }
 
 .fa-youtube-play {
   font-size: 42px;
@@ -94,4 +98,12 @@ table {
   border-radius: 50%; }
 
 .collection__video--left, .collection__playlist--left {
+  flex: 1;
+  max-width: 100%;
+  overflow: hidden;
   margin-right: 40px; }
+  .collection__video--left img, .collection__playlist--left img {
+    width: 100%; }
+
+.collection__video--right, .collection__playlist--right {
+  flex: 1; }

@@ -12,11 +12,15 @@ export const HeaderComponent = {
       <form class="form">
         <div class="form__element">
           <i class="fa fa-youtube-play"></i>
-          <input class="header__search-input" type="text" ng-model="$ctrl.searchInput" placeholder="Search" >
+          <input ng-if="!$ctrl.disableSearch" class="header__search-input" type="text" ng-model="$ctrl.searchInput" placeholder="Search" >
+          <span ng-if="$ctrl.disableSearch">{{$ctrl.searchInput}}</span>
         </div>
         <div>
           <button class="header__btn">
-            <a ui-sref="videos({ query: $ctrl.searchInput })">
+            <a ng-click="$ctrl.disableSearch = !$ctrl.disableSearch" ng-if="!$ctrl.disableSearch" ui-sref="videos({ query: $ctrl.searchInput })">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            <a ng-click="$ctrl.disableSearch = !$ctrl.disableSearch"  ng-if="$ctrl.disableSearch">
               <i class="fa fa-search" aria-hidden="true"></i>
             </a>
           </button>

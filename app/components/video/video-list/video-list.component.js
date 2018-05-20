@@ -15,6 +15,7 @@ export const VideoListComponent = {
      <i class="fa fa-spinner fa-spin" style="font-size:24px;margin-bottom:10px"></i>
      <span>Loading...</span>
     </div>
+
     <ul class="collection" ng-show="$ctrl.items.length">
       <li ng-repeat="item in $ctrl.items">
 
@@ -53,5 +54,9 @@ export const VideoListComponent = {
        
       </li>
     </ul>
+
+    <div class="show-more">
+      <span ng-click="" class="show-more__btn">Show more items</span>
+    </div>
   `
 }

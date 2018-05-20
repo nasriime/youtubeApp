@@ -12,14 +12,15 @@ class VideoListController {
   }
 
   $onInit(){
-    this._VideoService.getVideos(this.query).then( res =>{  
-    this.items = res.items
-    })
+    this.getVideos()
   }
-
-  // sayHello ({ videoName }) {
-  //   window.alert(`Hello ${videoName}!`)
-  // }
+  
+  getVideos(){
+    this._VideoService.getVideos(this.query).then( res => {  
+      this.items = res.items
+      })
+  }
+  
 }
 
 

@@ -4,6 +4,7 @@ class headerController {
 
   $onInit(){
     this.searchInput = ""
+    this.disableSearch = false
   }
 
 }
