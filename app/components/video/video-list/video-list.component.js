@@ -11,19 +11,46 @@ import controller from './video-list.controller'
 export const VideoListComponent = {
   controller,
   template: `
-  <ul class="collection">
+    <div class="spinner" ng-hide="$ctrl.items.length">
+     <i class="fa fa-spinner fa-spin" style="font-size:24px;margin-bottom:10px"></i>
+     <span>Loading...</span>
+    </div>
+    <ul class="collection" ng-show="$ctrl.items.length">
       <li ng-repeat="item in $ctrl.items">
-        <span ng-if="item.id.kind == 'youtube#channel'">
-          <a style="color:red" ui-sref="channel({id: item.id.channelId })">{{item.id.kind}}</a>
-        </span>  
-        
-        <span ng-if="item.id.kind == 'youtube#video'">
-          <a style="color:yellow" ui-sref="video({id: item.id.videoId })">{{item.id.kind}}</a>
-        </span>  
 
-        <span  ng-if="item.id.kind == 'youtube#playlist'">
-          <a style="color:green" ui-sref="playlist({id: item.id.playlistId })">{{item.id.kind}}</a>
-        </span>  
+        <a class="collection__channel" ng-if="item.id.kind == 'youtube#channel'" ui-sref="channel({id: item.id.channelId })">
+          <div class="collection__channel--left">
+            <img ng-src="{{item.snippet.thumbnails.medium.url}}" >
+          </div> 
+          <div class="collection__channel--right">
+            {{item.snippet.publishedAt}}<br>
+            {{item.snippet.title}}<br>
+            {{item.snippet.channelTitle}}
+          </div>
+        </a>        
+      
+        <a class="collection__video" ng-if="item.id.kind == 'youtube#video'" ui-sref="video({id: item.id.videoId })">
+          <div class="collection__video--left">
+            <img ng-src="{{item.snippet.thumbnails.medium.url}}" >
+          </div> 
+          <div class="collection__video--right">
+            {{item.snippet.publishedAt}}<br>
+            {{item.snippet.title}}<br>
+            {{item.snippet.channelTitle}}
+          </div>
+        </a>
+    
+        <a class="collection__playlist" ng-if="item.id.kind == 'youtube#playlist'" ui-sref="playlist({id: item.id.playlistId })">
+          <div class="collection__playlist--left">
+            <img ng-src="{{item.snippet.thumbnails.medium.url}}" >
+          </div> 
+          <div class="collection__playlist--right">
+            {{item.snippet.publishedAt}}<br>
+            {{item.snippet.title}}<br>
+            {{item.snippet.channelTitle}}
+          </div>
+        </a>
+       
       </li>
     </ul>
   `

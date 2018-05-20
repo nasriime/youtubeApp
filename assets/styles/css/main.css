@@ -46,20 +46,23 @@ table {
   padding-left: 10px;
   padding-right: 10px; }
 
+.form {
+  display: flex;
+  justify-content: space-between; }
+
+/************** Header ******************/
 .header__btn {
   background: transparent;
   border: none; }
 
 .header__search-input {
   padding: 5px;
-  align-self: center; }
-
-.form {
-  display: flex;
-  justify-content: space-between; }
+  align-self: center;
+  width: calc(100% - 50px); }
 
 .form__element {
-  display: flex; }
+  display: flex;
+  flex: 2; }
 
 .fa-youtube-play {
   font-size: 42px;
@@ -68,4 +71,27 @@ table {
 
 .fa-search {
   color: #fff;
-  font-size: 20px; }
+  font-size: 20px;
+  margin-top: 10px; }
+
+/************** VideosList ******************/
+.spinner {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  margin-top: 100px;
+  height: 100vh;
+  color: #a3a1a1; }
+
+.collection {
+  padding: 30px; }
+
+.collection__video, .collection__channel, .collection__playlist {
+  display: flex;
+  margin-bottom: 40px; }
+
+.collection__channel img {
+  border-radius: 50%; }
+
+.collection__video--left, .collection__playlist--left {
+  margin-right: 40px; }
