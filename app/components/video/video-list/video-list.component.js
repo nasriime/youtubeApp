@@ -9,13 +9,9 @@
 import controller from './video-list.controller'
 
 export const VideoListComponent = {
-  bindings: {
-    // videos: '<'
-
-  },
   controller,
   template: `
-    <ul class="collection">
+  <ul class="collection">
       <li ng-repeat="item in $ctrl.items">
         <span ng-if="item.id.kind == 'youtube#channel'">
           <a style="color:red" ui-sref="channel({id: item.id.channelId })">{{item.id.kind}}</a>

@@ -12,6 +12,7 @@ import { VideoListComponent } from './video-list/video-list.component'
 import { VideoDetailComponent } from './video-detail/video-detail.component'
 import { channelDetailComponent } from './channel-detail/channel-detail.component'
 import { PlaylistItemsComponent } from './playlist-items/playlist-items.component'
+import { MainComponent } from './main/main.component'
 import VideoService from './video.service'
 
 const video = angular
@@ -22,12 +23,17 @@ const video = angular
   .component('videoDetail', VideoDetailComponent)
   .component('channelDetail', channelDetailComponent)
   .component('playlistItems', PlaylistItemsComponent)
+  .component('main', MainComponent)
   .config(($stateProvider, $urlRouterProvider, $locationProvider) => {
     $locationProvider.html5Mode(true);
 
     $stateProvider
-      .state('videos', {
+      .state('main', {
         url: '/',
+        component: 'main',
+      })
+      .state('videos', {
+        url: '/search/?query',
         component: 'videoList'
       })
       .state('video', {

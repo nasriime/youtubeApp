@@ -6,9 +6,9 @@
 import VideoService from '../video.service'
 
 class VideoListController {
-  constructor (VideoService) {
-    this.query = 'PHP Front To Back'
+  constructor (VideoService, $stateParams) {
     this._VideoService = VideoService
+    this.query = $stateParams.query
   }
 
   $onInit(){
@@ -17,9 +17,9 @@ class VideoListController {
     })
   }
 
-  sayHello ({ videoName }) {
-    window.alert(`Hello ${videoName}!`)
-  }
+  // sayHello ({ videoName }) {
+  //   window.alert(`Hello ${videoName}!`)
+  // }
 }
 
 

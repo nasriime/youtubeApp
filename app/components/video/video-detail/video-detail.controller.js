@@ -1,7 +1,7 @@
 import VideoService from '../video.service'
 
 class relatedVideosController {
-  constructor (VideoService,$stateParams) {
+  constructor (VideoService, $stateParams) {
     this.id = $stateParams.id
     this._VideoService = VideoService
   }
