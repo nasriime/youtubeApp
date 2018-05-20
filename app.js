@@ -123,7 +123,7 @@ var _headerController2 = _interopRequireDefault(_headerController);
 
 var HeaderComponent = {
   controller: _headerController2["default"],
-  template: "\n    <nav>\n      <form>\n        <input type=\"text\" ng-model=\"$ctrl.searchInput\" placeholder=\"Search\" >\n        <button>\n          <a ui-sref=\"videos({ query: $ctrl.searchInput })\">Search</a>\n        </button>\n      </form>\n    </nav>\n  "
+  template: "\n    <header class=\"header\">\n      <form class=\"form\">\n        <div class=\"form__element\">\n          <i class=\"fa fa-youtube-play\"></i>\n          <input class=\"header__search-input\" type=\"text\" ng-model=\"$ctrl.searchInput\" placeholder=\"Search\" >\n        </div>\n        <div>\n          <button class=\"header__btn\">\n            <a ui-sref=\"videos({ query: $ctrl.searchInput })\">\n              <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\n            </a>\n          </button>\n        </div>\n      </form>\n    </header>\n  "
 };
 exports.HeaderComponent = HeaderComponent;
 
