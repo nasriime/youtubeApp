@@ -9,7 +9,7 @@ gulp.task('build', function () {
 })
 
 gulp.task('sass',function(){
-	gulp.src(src +'styles/scss/custom.scss')
+	gulp.src(src +'styles/scss/main.scss')
 	.pipe(sass())
 	.pipe(gulp.dest(src + 'styles/css'))
 })
@@ -21,7 +21,7 @@ gulp.task('eslint', function () {
 })
 
 gulp.task('watch', ['sass'],function(){
-	gulp.watch(src +'styles/scss/*.scss',[sass]);
+	gulp.watch(src +'styles/scss/main.scss',[sass]);
 })
 
 

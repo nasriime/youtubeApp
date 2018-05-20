@@ -3,7 +3,7 @@ class headerController {
   }
 
   $onInit(){
-    this.searchInput = "sasa"
+    this.searchInput = ""
   }
 
 }

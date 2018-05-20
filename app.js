@@ -146,7 +146,7 @@ var headerController = (function () {
   _createClass(headerController, [{
     key: "$onInit",
     value: function $onInit() {
-      this.searchInput = "sasa";
+      this.searchInput = "";
     }
   }]);
 
@@ -243,10 +243,7 @@ var video = _angular2['default'].module('videos', []).service('VideoService', _v
   }).state('videos', {
     url: '/search/?query',
     component: 'videoList'
-  }). // resolve: {
-  //   videos: VideoService => VideoService.getVideos($stateParams.query)
-  // }
-  state('video', {
+  }).state('video', {
     url: '/videos/:id',
     component: 'videoDetail',
     resolve: {
@@ -463,10 +460,6 @@ var _videoListController = require('./video-list.controller');
 var _videoListController2 = _interopRequireDefault(_videoListController);
 
 var VideoListComponent = {
-  bindings: {
-    // videos: '<'
-
-  },
   controller: _videoListController2['default'],
   template: '\n  <ul class="collection">\n      <li ng-repeat="item in $ctrl.items">\n        <span ng-if="item.id.kind == \'youtube#channel\'">\n          <a style="color:red" ui-sref="channel({id: item.id.channelId })">{{item.id.kind}}</a>\n        </span>  \n        \n        <span ng-if="item.id.kind == \'youtube#video\'">\n          <a style="color:yellow" ui-sref="video({id: item.id.videoId })">{{item.id.kind}}</a>\n        </span>  \n\n        <span  ng-if="item.id.kind == \'youtube#playlist\'">\n          <a style="color:green" ui-sref="playlist({id: item.id.playlistId })">{{item.id.kind}}</a>\n        </span>  \n      </li>\n    </ul>\n  '
 };

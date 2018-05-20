@@ -4,10 +4,9 @@
   "description": "youtube app",
   "main": "index.js",
   "scripts": {
-    "create": "touch ./app.js",
     "build": "browserify -t babelify ./app/app.js -o ./app.js",
     "watch": "watchify -t babelify ./app/app.js -o ./app.js --debug",
-    "dev":"lite-server",
+    "dev": "lite-server",
     "serve": "npm run dev && npm run watch"
   },
   "dependencies": {
