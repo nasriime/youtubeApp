@@ -24,7 +24,7 @@ export const VideoListComponent = {
             <img ng-src="{{item.snippet.thumbnails.medium.url}}" >
           </div> 
           <div class="collection__channel--right">
-            {{item.snippet.publishedAt}}<br>
+            {{item.snippet.publishedAt | date }}<br>
             {{item.snippet.title}}<br>
             {{item.snippet.channelTitle}}
           </div>
@@ -35,7 +35,7 @@ export const VideoListComponent = {
             <img ng-src="{{item.snippet.thumbnails.medium.url}}" >
           </div> 
           <div class="collection__video--right">
-            {{item.snippet.publishedAt}}<br>
+            {{item.snippet.publishedAt | date }}<br>
             {{item.snippet.title}}<br>
             {{item.snippet.channelTitle}}
           </div>
@@ -46,7 +46,7 @@ export const VideoListComponent = {
             <img ng-src="{{item.snippet.thumbnails.medium.url}}" >
           </div> 
           <div class="collection__playlist--right">
-            {{item.snippet.publishedAt}}<br>
+            {{item.snippet.publishedAt | date }}<br>
             {{item.snippet.title}}<br>
             {{item.snippet.channelTitle}}
           </div>

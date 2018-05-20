@@ -85,25 +85,36 @@ table {
   flex-flow: column;
   margin-top: 100px;
   height: 100vh;
-  color: #a3a1a1; }
+  color: #747171; }
 
 .collection {
-  padding: 30px; }
+  padding: 30px 30px 0; }
 
 .collection__video, .collection__channel, .collection__playlist {
   display: flex;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+  color: #747171;
+  text-decoration: none; }
 
 .collection__channel img {
   border-radius: 50%; }
 
-.collection__video--left, .collection__playlist--left {
+.collection__video--left, .collection__playlist--left, .collection__channel--left {
   flex: 1;
   max-width: 100%;
   overflow: hidden;
-  margin-right: 40px; }
-  .collection__video--left img, .collection__playlist--left img {
+  margin-right: 20px; }
+  .collection__video--left img, .collection__playlist--left img, .collection__channel--left img {
     width: 100%; }
 
-.collection__video--right, .collection__playlist--right {
-  flex: 1; }
+.collection__video--right, .collection__playlist--right, .collection__channel--right {
+  flex: 1;
+  color: #747171; }
+
+.show-more {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 20px;
+  color: #747171;
+  padding-top: 20px;
+  border-top: 1px solid #747171; }

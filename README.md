@@ -1,6 +1,6 @@
 # youtube-App
 
- <h1>An application with Angular 1.x and ES6.</h1>
+ <h2>An application with Angular 1.x and ES6.</h2>
 
 <h3>Introduction</h3>
 <p>This application is about to search youtube api v3 . It is a very small application which has a Search module which can be used to search videos, playlists and chaneels. </p>
@@ -10,7 +10,7 @@
 <ol>
     <li><code>npm install</code></li>
     <li><code>npm run build</code></li>
-    <li><code>npm run dev</code>To start the local server</li>
+    <li><code>npm run serve</code>To start the local server</li>
 </ol>
 
 <h3>Technical features</h3>
