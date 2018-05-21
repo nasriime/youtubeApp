@@ -25,7 +25,7 @@ export const VideoListComponent = {
           </div> 
           <div class="collection__channel--right">
             <p>{{item.snippet.publishedAt | date }}</p>
-            <p>{{item.snippet.title}}</p>
+            <p class="collection__title">{{item.snippet.title}}</p>
             <p>{{item.snippet.channelTitle}}</p>
           </div>
         </a>        
@@ -36,7 +36,7 @@ export const VideoListComponent = {
           </div> 
           <div class="collection__video--right">
             <p>{{item.snippet.publishedAt | date }}</p>
-            <p>{{item.snippet.title}}</p>
+            <p class="collection__title">{{item.snippet.title}}</p>
             <p>{{item.snippet.channelTitle}}</p>
           </div>
         </a>
@@ -47,7 +47,7 @@ export const VideoListComponent = {
           </div> 
           <div class="collection__playlist--right">
             <p>{{item.snippet.publishedAt | date }}</p>
-            <p>{{item.snippet.title}}</p>
+            <p class="collection__title">{{item.snippet.title}}</p>
             <p>{{item.snippet.channelTitle}}</p>
           </div>
         </a>
