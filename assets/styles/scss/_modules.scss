@@ -45,6 +45,22 @@
         align-self: center;
     }
 }
+.collection__playlist--left{
+    position:relative;
+
+    .playlist__overlay{
+        position: absolute;
+        right:0;
+        top:0;
+        bottom: 0;
+        width:100px;
+        background:rgba(black, 0.6);
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 .collection__video--right,.collection__playlist--right,.collection__channel--right{
     flex:1;
     color:$font-color;

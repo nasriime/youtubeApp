@@ -62,6 +62,9 @@ export const VideoListComponent = {
     
         <a class="collection__playlist" ng-if="item.id.kind == 'youtube#playlist'" ui-sref="playlist({id: item.id.playlistId })">
           <div class="collection__playlist--left">
+            <div class="playlist__overlay">
+              <i class="fa fa-navicon" style="color:#fff"></i>
+            </div>
             <img ng-src="{{item.snippet.thumbnails.medium.url}}" >
           </div> 
           <div class="collection__playlist--right">

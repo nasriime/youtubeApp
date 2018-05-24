@@ -76,7 +76,7 @@ body {
   .form__element span {
     align-self: center;
     color: #fff;
-    font-size: 25px; }
+    font-size: 20px; }
 
 .fa-youtube-play {
   font-size: 42px;
@@ -155,6 +155,19 @@ select {
   .collection__channel--left img {
     width: 50%;
     align-self: center; }
+
+.collection__playlist--left {
+  position: relative; }
+  .collection__playlist--left .playlist__overlay {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center; }
 
 .collection__video--right, .collection__playlist--right, .collection__channel--right {
   flex: 1;
