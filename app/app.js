@@ -5,7 +5,7 @@
  */
 
 import angular from 'angular'
-import uiRouter from 'angular-ui-router'
+import uiRouter from '@uirouter/angularjs'
 
 import common from './common/common'
 import components from './components/components'
