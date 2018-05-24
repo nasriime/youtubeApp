@@ -8,12 +8,12 @@ export default class VideoService {
     this.$http = $http
   }
 
-  getVideos (q) {
+  getVideos (obj) {
     return this.$http.get('https://www.googleapis.com/youtube/v3/search',
     {
       params:{
-        q,
-        maxResults: 25,
+        q:obj.q,
+        maxResults: obj.m,
         part :'snippet',
         key:'AIzaSyCC-Msso9uDZxEBkSMcaafE-3WiVcsv98I'
       }

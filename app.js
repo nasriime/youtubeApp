@@ -104,39 +104,47 @@ var _headerController2 = _interopRequireDefault(_headerController);
 
 var HeaderComponent = {
   controller: _headerController2["default"],
-  template: "\n    <header class=\"header\">\n      <form class=\"form\">\n        <div class=\"form__element\">\n          <i class=\"fa fa-youtube-play\"></i>\n          <input ng-if=\"!$ctrl.disableSearch\" class=\"header__search-input\" type=\"text\" ng-model=\"$ctrl.searchInput\" placeholder=\"Search\" >\n          <span ng-if=\"$ctrl.disableSearch\">{{$ctrl.searchInput}}</span>\n        </div>\n        <div>\n          <button class=\"header__btn\">\n            <a ng-click=\"$ctrl.disableSearch = !$ctrl.disableSearch\" ng-if=\"!$ctrl.disableSearch\" ui-sref=\"videos({ query: $ctrl.searchInput })\">\n              <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\n            </a>\n            <a ng-click=\"$ctrl.disableSearch = !$ctrl.disableSearch\"  ng-if=\"$ctrl.disableSearch\">\n              <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\n            </a>\n          </button>\n        </div>\n      </form>\n    </header>\n  "
+  template: "\n    <header class=\"header\">\n      <form class=\"form\" ng-submit=\"$ctrl.submitForm()\" id=\"searchform\">\n        <div class=\"form__element\">\n          <i class=\"fa fa-youtube-play\"></i>\n          <input ng-if=\"!$ctrl.disableSearch\" class=\"header__search-input\" type=\"text\" ng-model=\"$ctrl.searchInput\" placeholder=\"Search\" >\n          <span ng-if=\"$ctrl.disableSearch\">{{$ctrl.searchInput}}</span>\n        </div>\n        <div>\n          <button ng-click=\"$ctrl.submitForm();$ctrl.disableSearch = !$ctrl.disableSearch\" type=\"submit\" class=\"header__btn\">\n            <a>\n              <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\n            </a>\n          </button>\n        </div>\n      </form>\n    </header>\n  "
 };
 exports.HeaderComponent = HeaderComponent;
 
 },{"./header.controller":5}],5:[function(require,module,exports){
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 var headerController = (function () {
-  function headerController() {
+  function headerController($state) {
     _classCallCheck(this, headerController);
+
+    this._state = $state;
   }
 
   _createClass(headerController, [{
-    key: "$onInit",
+    key: '$onInit',
     value: function $onInit() {
-      this.searchInput = "";
       this.disableSearch = false;
+    }
+  }, {
+    key: 'submitForm',
+    value: function submitForm() {
+      this._state.go('videos', {
+        query: this.searchInput
+      });
     }
   }]);
 
   return headerController;
 })();
 
-exports["default"] = headerController;
-module.exports = exports["default"];
+exports['default'] = headerController;
+module.exports = exports['default'];
 
 },{}],6:[function(require,module,exports){
 /**
@@ -443,7 +451,7 @@ var _videoListController2 = _interopRequireDefault(_videoListController);
 
 var VideoListComponent = {
   controller: _videoListController2['default'],
-  template: '\n    <div class="spinner" ng-hide="$ctrl.items.length">\n     <i class="fa fa-spinner fa-spin" style="font-size:24px;margin-bottom:10px"></i>\n     <span>Loading...</span>\n    </div>\n\n    <ul class="collection" ng-show="$ctrl.items.length">\n      <li ng-repeat="item in $ctrl.items | limitTo: $ctrl.itemsLimit()">\n\n        <a class="collection__channel" ng-if="item.id.kind == \'youtube#channel\'" ui-sref="channel({id: item.id.channelId })">\n          <div class="collection__channel--left">\n            <img ng-src="{{item.snippet.thumbnails.medium.url}}" >\n          </div> \n          <div class="collection__channel--right">\n            <p>{{item.snippet.publishedAt | date }}</p>\n            <p class="collection__title">{{item.snippet.title}}</p>\n            <p>{{item.snippet.channelTitle}}</p>\n          </div>\n        </a>        \n      \n        <a class="collection__video" ng-if="item.id.kind == \'youtube#video\'" ui-sref="video({id: item.id.videoId })">\n          <div class="collection__video--left">\n            <img ng-src="{{item.snippet.thumbnails.medium.url}}" >\n          </div> \n          <div class="collection__video--right">\n            <p>{{item.snippet.publishedAt | date }}</p>\n            <p class="collection__title">{{item.snippet.title}}</p>\n            <p>{{item.snippet.channelTitle}}</p>\n          </div>\n        </a>\n    \n        <a class="collection__playlist" ng-if="item.id.kind == \'youtube#playlist\'" ui-sref="playlist({id: item.id.playlistId })">\n          <div class="collection__playlist--left">\n            <img ng-src="{{item.snippet.thumbnails.medium.url}}" >\n          </div> \n          <div class="collection__playlist--right">\n            <p>{{item.snippet.publishedAt | date }}</p>\n            <p class="collection__title">{{item.snippet.title}}</p>\n            <p>{{item.snippet.channelTitle}}</p>\n          </div>\n        </a>\n       \n      </li>\n    </ul>\n\n    <div class="show-more" ng-show="$ctrl.items.length">\n      <span ng-show="$ctrl.hasMoreItemsToShow()" ng-click="$ctrl.showMoreItems()" class="show-more__btn">Show more items</span>\n    </div>\n  '
+  template: '\n    <div class="spinner" ng-hide="$ctrl.items.length">\n     <i class="fa fa-spinner fa-spin" style="font-size:24px;margin-bottom:10px"></i>\n     <span>Loading...</span>\n    </div>\n\n    <div ng-show="$ctrl.items.length" class="select-container">\n\n      <div class="select-wrapper"> \n        <select ng-model="$ctrl.filter1">\n          <option value="" selected>All</option>\n          <option value="channel">Channel</option>\n          <option value="playlist">Playlist</option>\n        </select>\n      </div>\n\n      <div class="select-wrapper"> \n        <select ng-model="$ctrl.filter2">\n          <option value="" selected>Today</option>\n          <option value="week">This week</option>\n          <option value="month">This month</option>\n        </select>\n      </div>\n    </div>\n\n    <ul class="collection" ng-show="$ctrl.items.length">\n      <li ng-repeat="item in $ctrl.items | limitTo: $ctrl.itemsLimit()">\n\n        <a class="collection__channel" ng-if="item.id.kind == \'youtube#channel\'" ui-sref="channel({id: item.id.channelId })">\n          <div class="collection__channel--left">\n            <img ng-src="{{item.snippet.thumbnails.medium.url}}" >\n          </div> \n          <div class="collection__channel--right">\n            <p>{{item.snippet.publishedAt | date }}</p>\n            <p class="collection__title">{{item.snippet.title}}</p>\n            <p>{{item.snippet.channelTitle}}</p>\n          </div>\n        </a>        \n      \n        <a class="collection__video" ng-if="item.id.kind == \'youtube#video\'" ui-sref="video({id: item.id.videoId })">\n          <div class="collection__video--left">\n            <img ng-src="{{item.snippet.thumbnails.medium.url}}" >\n          </div> \n          <div class="collection__video--right">\n            <p>{{item.snippet.publishedAt | date }}</p>\n            <p class="collection__title">{{item.snippet.title}}</p>\n            <p>{{item.snippet.channelTitle}}</p>\n          </div>\n        </a>\n    \n        <a class="collection__playlist" ng-if="item.id.kind == \'youtube#playlist\'" ui-sref="playlist({id: item.id.playlistId })">\n          <div class="collection__playlist--left">\n            <img ng-src="{{item.snippet.thumbnails.medium.url}}" >\n          </div> \n          <div class="collection__playlist--right">\n            <p>{{item.snippet.publishedAt | date }}</p>\n            <p class="collection__title">{{item.snippet.title}}</p>\n            <p>{{item.snippet.channelTitle}}</p>\n          </div>\n        </a>\n       \n      </li>\n    </ul>\n\n    <div class="show-more" ng-show="$ctrl.items.length">\n      <span ng-show="$ctrl.hasMoreItemsToShow()" ng-hide="$ctrl.items.length < $ctrl.itemsLimit()" ng-click="$ctrl.showMoreItems()" class="show-more__btn">Show more items</span>\n      <i ng-show="$ctrl.items.length < $ctrl.itemsLimit()" class="fa fa-spinner fa-spin" style="font-size:24px;margin-bottom:10px"></i>     \n    </div>\n  '
 };
 exports.VideoListComponent = VideoListComponent;
 
@@ -477,8 +485,11 @@ var VideoListController = (function () {
 
     this._VideoService = VideoService;
     this.query = $stateParams.query;
+    // this.filter1 = ""
+    // this.filter2 = ""
     this.pagesShown = 1;
     this.pageSize = 5;
+    this.maxResults = 5;
     this.itemsLimit = function () {
       return _this.pageSize * _this.pagesShown;
     };
@@ -487,6 +498,15 @@ var VideoListController = (function () {
     };
     this.showMoreItems = function () {
       _this.pagesShown = _this.pagesShown + 1;
+      _this.maxResults = _this.maxResults + 5;
+      _this.obj.m = _this.maxResults;
+      _this.getVideos();
+    };
+    this.obj = {
+      q: this.query,
+      m: this.maxResults,
+      f1: this.filter1,
+      f2: this.filter2
     };
   }
 
@@ -500,7 +520,7 @@ var VideoListController = (function () {
     value: function getVideos() {
       var _this2 = this;
 
-      this._VideoService.getVideos(this.query).then(function (res) {
+      this._VideoService.getVideos(this.obj).then(function (res) {
         _this2.items = res.items;
       });
     }
@@ -537,11 +557,11 @@ var VideoService = (function () {
 
   _createClass(VideoService, [{
     key: 'getVideos',
-    value: function getVideos(q) {
+    value: function getVideos(obj) {
       return this.$http.get('https://www.googleapis.com/youtube/v3/search', {
         params: {
-          q: q,
-          maxResults: 25,
+          q: obj.q,
+          maxResults: obj.m,
           part: 'snippet',
           key: 'AIzaSyCC-Msso9uDZxEBkSMcaafE-3WiVcsv98I'
         }

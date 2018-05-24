@@ -16,6 +16,25 @@ export const VideoListComponent = {
      <span>Loading...</span>
     </div>
 
+    <div ng-show="$ctrl.items.length" class="select-container">
+
+      <div class="select-wrapper"> 
+        <select ng-model="$ctrl.filter1">
+          <option value="" selected>All</option>
+          <option value="channel">Channel</option>
+          <option value="playlist">Playlist</option>
+        </select>
+      </div>
+
+      <div class="select-wrapper"> 
+        <select ng-model="$ctrl.filter2">
+          <option value="" selected>Today</option>
+          <option value="week">This week</option>
+          <option value="month">This month</option>
+        </select>
+      </div>
+    </div>
+
     <ul class="collection" ng-show="$ctrl.items.length">
       <li ng-repeat="item in $ctrl.items | limitTo: $ctrl.itemsLimit()">
 
@@ -56,7 +75,8 @@ export const VideoListComponent = {
     </ul>
 
     <div class="show-more" ng-show="$ctrl.items.length">
-      <span ng-show="$ctrl.hasMoreItemsToShow()" ng-click="$ctrl.showMoreItems()" class="show-more__btn">Show more items</span>
+      <span ng-show="$ctrl.hasMoreItemsToShow()" ng-hide="$ctrl.items.length < $ctrl.itemsLimit()" ng-click="$ctrl.showMoreItems()" class="show-more__btn">Show more items</span>
+      <i ng-show="$ctrl.items.length < $ctrl.itemsLimit()" class="fa fa-spinner fa-spin" style="font-size:24px;margin-bottom:10px"></i>     
     </div>
   `
 }

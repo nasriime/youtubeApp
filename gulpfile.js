@@ -1,6 +1,8 @@
 const gulp = require('gulp')
 const sass = require('gulp-sass')
 const eslint = require("gulp-eslint")
+const webserver = require('gulp-webserver')
+
 
 const src = './assets/'
 
@@ -20,8 +22,18 @@ gulp.task('eslint', function () {
         .pipe(eslint.format('stylish'));
 })
 
+gulp.task('serve', function () {
+    gulp.src('./')
+        .pipe(webserver({
+            fallback: 'index.html',
+            // livereload: true,
+            // directoryListing: true,
+            open: true
+        }))
+})
+
 gulp.task('watch', ['sass'],function(){
-	gulp.watch(src +'styles/scss/main.scss',[sass]);
+	gulp.watch(src +'styles/scss/main.scss',[sass])
 })
 
 

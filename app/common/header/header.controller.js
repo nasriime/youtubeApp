@@ -1,10 +1,16 @@
 class headerController {
-  constructor () {
+  constructor ($state) {
+    this._state = $state
   }
 
   $onInit(){
-    this.searchInput = ""
     this.disableSearch = false
+  }
+
+  submitForm(){
+    this._state.go('videos', { 
+      query: this.searchInput 
+    })
   }
 
 }

@@ -1,0 +1,32 @@
+.select-container{
+    padding: 15px;
+    border-bottom: 1px solid $font-color;
+}
+.select-wrapper {
+    background-color: #FFF;
+    display: inline-block;
+    position: relative;
+}
+.select-wrapper:after {
+    content: "\f078";
+    font-family: 'FontAwesome';
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    z-index: 5;
+    color:lighten($color: $font-color, $amount: 20%);
+}
+select {
+    padding: 10px 40px 10px 10px;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #bbb;
+    background-color: transparent;
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+    z-index: 10;
+    outline: 0;
+}
