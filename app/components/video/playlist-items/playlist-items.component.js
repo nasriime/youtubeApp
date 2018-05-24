@@ -5,7 +5,9 @@ export const PlaylistItemsComponent = {
   },
   template: `
     <div>
-      {{ $ctrl.playlistItems }}
+      <p>PlayList Details :</p><br>  
+      <p>{{ $ctrl.playlistItems.items[0].snippet.title }}</p><br>
+      <p>{{ $ctrl.playlistItems.items[0].snippet.description }}</p><br>
     </div>
   `
 }

@@ -12,10 +12,14 @@ export const VideoDetailComponent = {
   controller,
   template: `
     <div>
-      {{ $ctrl.video.items[0].id }}   
+      <p>Video Details : </p><br>  
+      <p>{{ $ctrl.video.items[0].snippet.title }}</p><br>
+      <p>{{ $ctrl.video.items[0].snippet.description }}</p><br>
+
+      <p>Related Videos</p><br><br>
       <ul>
         <li ng-repeat="item in $ctrl.items">
-          {{ item.id.videoId }} 
+          {{ item.snippet.title }} 
         </li>
       </ul>
     </div>

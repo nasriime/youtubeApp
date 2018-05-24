@@ -4,7 +4,9 @@ export const channelDetailComponent = {
       },
       template: `
         <div>
-          {{ $ctrl.channel.items[0].id }}    
+          <p>channel Details :</p><br>  
+          <p>{{ $ctrl.channel.items[0].snippet.title }}</p><br>
+          <p>{{ $ctrl.channel.items[0].snippet.description }}</p><br>
         </div>
       `
 }

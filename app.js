@@ -184,7 +184,7 @@ var channelDetailComponent = {
   bindings: {
     channel: '<'
   },
-  template: '\n        <div>\n          {{ $ctrl.channel.items[0].id }}    \n        </div>\n      '
+  template: '\n        <div>\n          <p>channel Details :</p><br>  \n          <p>{{ $ctrl.channel.items[0].snippet.title }}</p><br>\n          <p>{{ $ctrl.channel.items[0].snippet.description }}</p><br>\n        </div>\n      '
 };
 exports.channelDetailComponent = channelDetailComponent;
 
@@ -285,7 +285,7 @@ var PlaylistItemsComponent = {
   bindings: {
     playlistItems: '<'
   },
-  template: '\n    <div>\n      {{ $ctrl.playlistItems }}\n    </div>\n  '
+  template: '\n    <div>\n      <p>channel Details :</p><br>  \n      <p>{{ $ctrl.playlistItems.items[0].snippet.title }}</p><br>\n      <p>{{ $ctrl.playlistItems.items[0].snippet.description }}</p><br>\n    </div>\n  '
 };
 exports.PlaylistItemsComponent = PlaylistItemsComponent;
 
@@ -312,7 +312,7 @@ var VideoDetailComponent = {
     video: '<'
   },
   controller: _videoDetailController2['default'],
-  template: '\n    <div>\n      {{ $ctrl.video.items[0].id }}   \n      <ul>\n        <li ng-repeat="item in $ctrl.items">\n          {{ item.id.videoId }} \n        </li>\n      </ul>\n    </div>\n  '
+  template: '\n    <div>\n      <p>Video Details : </p><br>  \n      <p>{{ $ctrl.video.items[0].snippet.title }}</p><br>\n      <p>{{ $ctrl.video.items[0].snippet.description }}</p><br>\n\n      <p>Related Videos</p><br><br>\n      <ul>\n        <li ng-repeat="item in $ctrl.items">\n          {{ item.snippet.title }} \n        </li>\n      </ul>\n    </div>\n  '
 };
 exports.VideoDetailComponent = VideoDetailComponent;
 
